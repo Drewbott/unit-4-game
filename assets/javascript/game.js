@@ -2,18 +2,13 @@
 //   <!-- ========================================= -->
 
 
-  var targetNumber = [];
+  var targetNumber = 0;
   var counter = 0;
   var numberOptions = [];
   var wins = [];
   var losses = [];
   // Now for the hard part. Creating multiple crystals each with their own unique number value.
-  targetNumber.push(Math.floor(Math.random() * 102) +19)
-  $("#number-to-guess").text(targetNumber);
 
-  for (var i = 0; i < 4; i++) {
-    numberOptions.push(Math.floor(Math.random() * 20) + 2)
-  }
 
   // We begin by expanding our array to include four options.
   function updatewins (){
@@ -23,7 +18,20 @@
   function updatelosses(){
     $("#losses").text(losses);
   }
+
+//   function restartGame(){
+// updatelosses()
+// updatewins()
+//   }
   
+  function initializeGame(){
+    $('#crystals').empty();
+    targetNumber = Math.floor(Math.random() * 102) +19;
+    $("#number-to-guess").text(targetNumber);
+  
+    for (var i = 0; i < 4; i++) {
+      numberOptions.push(Math.floor(Math.random() * 20) + 2)
+    }
 
   // Next we create a for loop to create crystals for every numberOption.
 
@@ -60,9 +68,9 @@
     $("#crystals").append(imageCrystal3);
     $("#crystals").append(imageCrystal4);
 
-
+  }
   // This time, our click event applies to every single crystal on the page. Not just one.
-  $(".crystal-image").on("click", function() {
+  $(document).on("click", ".crystal-image", function() {
 
     // Determining the crystal's value requires us to extract the value from the data attribute.
     // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
@@ -83,14 +91,19 @@
       alert("You win!");
       wins++;
       updatewins ()
+      initializeGame();
     }
 
     else if (counter > targetNumber) {
       alert("You lose!!");
       losses++;
       updatelosses()
+      initializeGame();
     }
 
+
   });
+
+  initializeGame();
 
  
