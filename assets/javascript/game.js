@@ -5,6 +5,8 @@
   var targetNumber = [];
   var counter = 0;
   var numberOptions = [];
+  var wins = [];
+  var losses = [];
   // Now for the hard part. Creating multiple crystals each with their own unique number value.
   targetNumber.push(Math.floor(Math.random() * 102) +19)
   $("#number-to-guess").text(targetNumber);
@@ -14,6 +16,13 @@
   }
 
   // We begin by expanding our array to include four options.
+  function updatewins (){
+    $("#wins").text(wins);
+  };
+
+  function updatelosses(){
+    $("#losses").text(losses);
+  }
   
 
   // Next we create a for loop to create crystals for every numberOption.
@@ -68,16 +77,18 @@
 
     // All of the same game win-lose logic applies. So the rest remains unchanged.
     // alert("New score: " + counter);
-   $("#current-score").append(counter);
+   $("#current-score").text(counter);
 
     if (counter == targetNumber) {
-      // alert("You win!");
+      alert("You win!");
       wins++;
-      document.getElementById("#wins")
+      updatewins ()
     }
 
     else if (counter > targetNumber) {
       alert("You lose!!");
+      losses++;
+      updatelosses()
     }
 
   });
