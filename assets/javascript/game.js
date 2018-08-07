@@ -93,7 +93,6 @@
     // All of the same game win-lose logic applies. So the rest remains unchanged.
     // alert("New score: " + counter);
    $("#current-score").text(counter);
-   console.log(counter)
 
     if (counter == targetNumber) {
       alert("You win!");
