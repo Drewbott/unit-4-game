@@ -13,10 +13,16 @@
   // We begin by expanding our array to include four options.
   function updatewins (){
     $("#wins").text(wins);
+    $("#current-score").empty();
   };
 
   function updatelosses(){
     $("#losses").text(losses);
+    $("#current-score").empty();
+  };
+
+  function resetCounter(){
+    counter=0;
   }
 
 //   function restartGame(){
@@ -50,10 +56,10 @@
 
 
     // Each imageCrystal will be given a src link to the crystal image
-    imageCrystal.attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFeXre2yPD6v9_Dl1Y-quakZAk6LSQXDgLcu5mgMBzd2Ufk6OJ");
-    imageCrystal2.attr("src", "https://is5-ssl.mzstatic.com/image/thumb/Purple128/v4/c8/07/cc/c807cc56-694c-d0ee-a55f-14884b408493/BjbGeneric-1x_U007emarketing-0-85-220-0-8.png/246x0w.jpg");
-    imageCrystal3.attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3rZtSjOaTam-q_yMWxsbmNCEPNSPElnb20Wy0QOTYd38jrT76Dg");
-    imageCrystal4.attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSmdksmGJzuCb6OqFmU_OovBOS1k4GrfNnGkzDpRRsnrTs_0rE");
+    imageCrystal.attr("src", "https://vignette.wikia.nocookie.net/marvel-contestofchampions/images/c/cd/Crystal_alliance.png/revision/latest?cb=20151121233509");
+    imageCrystal2.attr("src", "https://vignette.wikia.nocookie.net/marvel-contestofchampions/images/1/14/4-Star_Crystal_Shards.png/revision/latest?cb=20151122000147");
+    imageCrystal3.attr("src", "https://vignette.wikia.nocookie.net/marvel-contestofchampions/images/1/1c/2-Star_Crystal.png/revision/latest?cb=20150825213642");
+    imageCrystal4.attr("src", "https://vignette.wikia.nocookie.net/marvel-contestofchampions/images/c/c4/Crystal_weekly_event.png/revision/latest?cb=20151122000423");
     // Each imageCrystal will be given a data attribute called data-crystalValue.
     // This data attribute will be set equal to the array value.
     imageCrystal.attr("data-crystalvalue", numberOptions[0]);
@@ -86,18 +92,21 @@
     // All of the same game win-lose logic applies. So the rest remains unchanged.
     // alert("New score: " + counter);
    $("#current-score").text(counter);
+   console.log(counter)
 
     if (counter == targetNumber) {
       alert("You win!");
       wins++;
-      updatewins ()
+      updatewins();
+      resetCounter();
       initializeGame();
     }
 
     else if (counter > targetNumber) {
       alert("You lose!!");
       losses++;
-      updatelosses()
+      updatelosses();
+      resetCounter();
       initializeGame();
     }
 
