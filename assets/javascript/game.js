@@ -23,6 +23,7 @@
 
   function resetCounter(){
     counter=0;
+    numberOptions=[];
   }
 
 //   function restartGame(){
